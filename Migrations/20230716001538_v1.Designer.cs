@@ -10,7 +10,7 @@ using UberEats.Models;
 namespace UberEats.Migrations
 {
     [DbContext(typeof(UberContext))]
-    [Migration("20230716000345_v1")]
+    [Migration("20230716001538_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,9 +18,9 @@ namespace UberEats.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.6");
 
-            modelBuilder.Entity("UberEats.Models.Driver", b =>
+            modelBuilder.Entity("UberEats.Models.Category", b =>
                 {
-                    b.Property<int>("DriverID")
+                    b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -28,44 +28,44 @@ namespace UberEats.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("DriverID");
+                    b.HasKey("CategoryID");
 
-                    b.ToTable("Drivers");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
                         {
-                            DriverID = 1,
+                            CategoryID = 1,
                             Name = "Restaurant"
                         },
                         new
                         {
-                            DriverID = 2,
+                            CategoryID = 2,
                             Name = "Grocery"
                         },
                         new
                         {
-                            DriverID = 3,
+                            CategoryID = 3,
                             Name = "Alcohol"
                         },
                         new
                         {
-                            DriverID = 4,
+                            CategoryID = 4,
                             Name = "Convienience"
                         },
                         new
                         {
-                            DriverID = 5,
+                            CategoryID = 5,
                             Name = "Flower shop"
                         },
                         new
                         {
-                            DriverID = 6,
+                            CategoryID = 6,
                             Name = "Pet Store"
                         },
                         new
                         {
-                            DriverID = 7,
+                            CategoryID = 7,
                             Name = "retail"
                         });
                 });
@@ -92,7 +92,7 @@ namespace UberEats.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("DriverID")
+                    b.Property<int>("CategoryID")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LogoImage")
@@ -101,7 +101,7 @@ namespace UberEats.Migrations
 
                     b.HasKey("PartnerID");
 
-                    b.HasIndex("DriverID");
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Partners");
 
@@ -113,20 +113,20 @@ namespace UberEats.Migrations
                             BusinessEmail = "intial@gmail.com",
                             BusinessName = "intial",
                             BusinessPhone = "123456",
-                            DriverID = 1,
+                            CategoryID = 1,
                             LogoImage = ""
                         });
                 });
 
             modelBuilder.Entity("UberEats.Models.Partner", b =>
                 {
-                    b.HasOne("UberEats.Models.Driver", "Driver")
+                    b.HasOne("UberEats.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("DriverID")
+                        .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Driver");
+                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

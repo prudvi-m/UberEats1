@@ -8,15 +8,15 @@ namespace UberEats.Controllers
     public class PartnerController : Controller
     {
         private UberContext context;
-        private List<Driver> categories;
+        private List<Category> categories;
        
         public PartnerController(UberContext ctx)
         {
             context = ctx;
-            categories = context.Drivers
-                    .OrderBy(c => c.DriverID)
+            categories = context.Categories
+                    .OrderBy(c => c.CategoryID)
                     .ToList();
-            ViewBag.Drivers = categories;
+            ViewBag.Categories = categories;
         }
 
         public IActionResult List(string id = "All")
@@ -30,12 +30,12 @@ namespace UberEats.Controllers
             else
             {
                 products = context.Partners
-                    .Where(p => p.Driver.Name == id)
+                    .Where(p => p.Category.Name == id)
                     .OrderBy(p => p.PartnerID).ToList();
             }
 
             // use ViewBag to pass category data to view
-            ViewBag.Drivers = categories;
+            ViewBag.Categories = categories;
             ViewBag.SelectedCategoryName = id;
 
             // bind products to view
@@ -65,7 +65,7 @@ namespace UberEats.Controllers
         public IActionResult add()
         {
             Partner partner = new Partner(); 
-            ViewBag.Drivers = categories;
+            ViewBag.Categories = categories;
             return View("add",partner);
         }
        

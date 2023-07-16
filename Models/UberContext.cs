@@ -10,28 +10,28 @@ namespace UberEats.Models
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public DbSet<Driver> Drivers { get; set; } = null!;
+        public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Partner> Partners { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Driver>().HasData(
-                new Driver { DriverID = 1, Name = "Restaurant" },
-                new Driver { DriverID = 2, Name = "Grocery" },
-                new Driver { DriverID = 3, Name = "Alcohol" },
-                new Driver {DriverID=4, Name="Convienience"},
-                new Driver {DriverID=5, Name="Flower shop"},
-                new Driver {DriverID=6,Name="Pet Store"},
-                new Driver {DriverID=7,Name="retail"}
+            modelBuilder.Entity<Category>().HasData(
+                new Category { CategoryID = 1, Name = "Restaurant" },
+                new Category { CategoryID = 2, Name = "Grocery" },
+                new Category { CategoryID = 3, Name = "Alcohol" },
+                new Category {CategoryID=4, Name="Convienience"},
+                new Category {CategoryID=5, Name="Flower shop"},
+                new Category {CategoryID=6,Name="Pet Store"},
+                new Category {CategoryID=7,Name="retail"}
             );
 
             modelBuilder.Entity<Partner>().HasData(
                 new Partner
                 {
                     PartnerID = 1,
-                    DriverID = 1,
+                    CategoryID = 1,
                     BusinessName = "intial",
                     BusinessAddress = "Chicago, 3001",
                     BusinessEmail = "intial@gmail.com",

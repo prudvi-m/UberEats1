@@ -9,16 +9,16 @@ namespace UberEats.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Drivers",
+                name: "Categories",
                 columns: table => new
                 {
-                    DriverID = table.Column<int>(type: "INTEGER", nullable: false)
+                    CategoryID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Drivers", x => x.DriverID);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,64 +31,64 @@ namespace UberEats.Migrations
                     BusinessAddress = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessEmail = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessPhone = table.Column<string>(type: "TEXT", nullable: false),
-                    DriverID = table.Column<int>(type: "INTEGER", nullable: false),
+                    CategoryID = table.Column<int>(type: "INTEGER", nullable: false),
                     LogoImage = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Partners", x => x.PartnerID);
                     table.ForeignKey(
-                        name: "FK_Partners_Drivers_DriverID",
-                        column: x => x.DriverID,
-                        principalTable: "Drivers",
-                        principalColumn: "DriverID",
+                        name: "FK_Partners_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 1, "Restaurant" });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 2, "Grocery" });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 3, "Alcohol" });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 4, "Convienience" });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 5, "Flower shop" });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 6, "Pet Store" });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "DriverID", "Name" },
+                table: "Categories",
+                columns: new[] { "CategoryID", "Name" },
                 values: new object[] { 7, "retail" });
 
             migrationBuilder.InsertData(
                 table: "Partners",
-                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "DriverID", "LogoImage" },
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
                 values: new object[] { 1, "Chicago, 3001", "intial@gmail.com", "intial", "123456", 1, "" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Partners_DriverID",
+                name: "IX_Partners_CategoryID",
                 table: "Partners",
-                column: "DriverID");
+                column: "CategoryID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -97,7 +97,7 @@ namespace UberEats.Migrations
                 name: "Partners");
 
             migrationBuilder.DropTable(
-                name: "Drivers");
+                name: "Categories");
         }
     }
 }
