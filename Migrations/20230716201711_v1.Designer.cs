@@ -11,7 +11,7 @@ using UberEats.Models;
 namespace UberEats.Migrations
 {
     [DbContext(typeof(UberContext))]
-    [Migration("20230716201552_v1")]
+    [Migration("20230716201711_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

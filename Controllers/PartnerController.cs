@@ -70,12 +70,18 @@ namespace UberEats.Controllers
         }
        
         [HttpPost]
-        public IActionResult add(Partner partner)
+        public IActionResult Add(Partner partner)
         {
-            context.Partners.Add(partner);
-            context.SaveChanges();
-            TempData["Message"] = "Partner Application "+partner.BusinessName+"  has been received.We will email you once the application has been recieved";
-            return RedirectToAction("","Home");  
+            if (ModelState.IsValid)
+            {
+                context.Partners.Add(partner);
+                context.SaveChanges();
+                TempData["Message"] = "Partner Application " + partner.BusinessName + " has been received. We will email you once the application has been received.";
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.Categories = categories;
+            // If ModelState is not valid, return to the add view with validation errors
+            return View("Add", partner);
         }
     }
 }
