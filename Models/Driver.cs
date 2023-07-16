@@ -7,7 +7,7 @@ namespace UberEats.Models
 {
     public class Driver
     {
-        public int DriverId { get; set; }
+        public int DriverID { get; set; }
 
         [Required(ErrorMessage = "Please enter a first name.")]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "First Name must contain characters only.")]
@@ -35,7 +35,7 @@ namespace UberEats.Models
 
         [Required(ErrorMessage = "Please enter an email.")]
         [EmailAddress(ErrorMessage = "Invalid email format.")]
-        [Remote(action: "VerifyEmail", controller: "Driver", ErrorMessage = "Email already exists.")]
+        // [Remote(action: "VerifyEmail", controller: "Driver", ErrorMessage = "Email already exists.")]
         public string Email { get; set; } = string.Empty;
 
         [RegularExpression(@"^\d{3}-\d{3}-\d{4}|\d{3}\.\d{3}\.\d{4}$", ErrorMessage = "Phone must be in the format xxx-xxx-xxxx or xxx.xxx.xxxx.")]

@@ -12,6 +12,7 @@ namespace UberEats.Models
 
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Partner> Partners { get; set; } = null!;
+        public DbSet<Driver> Drivers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

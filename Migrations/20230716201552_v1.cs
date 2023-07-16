@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -19,6 +20,27 @@ namespace UberEats.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Drivers",
+                columns: table => new
+                {
+                    DriverID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Address = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    SSN = table.Column<string>(type: "TEXT", nullable: false),
+                    PostCode = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    Phone = table.Column<string>(type: "TEXT", nullable: false),
+                    DriverLicense = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Drivers", x => x.DriverID);
                 });
 
             migrationBuilder.CreateTable(
@@ -93,6 +115,9 @@ namespace UberEats.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Drivers");
+
             migrationBuilder.DropTable(
                 name: "Partners");
 
