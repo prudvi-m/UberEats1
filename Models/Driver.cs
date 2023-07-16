@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.Text.RegularExpressions;
 
-namespace Drivers.Models
+namespace UberEats.Models
 {
     public class Driver
     {
