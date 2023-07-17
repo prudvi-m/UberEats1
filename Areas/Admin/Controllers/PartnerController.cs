@@ -134,7 +134,6 @@ namespace UberEats.Areas.Admin.Controllers
                 .FirstOrDefault(p => p.PartnerID == id) ?? new Partner();
                  ViewBag.Dta="Approve";
                  TempData["data"]="Approve";
-              
             return View(partner);
         }
 

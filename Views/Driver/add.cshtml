@@ -1,0 +1,79 @@
+@model Driver
+
+<h1>Add Driver</h1>
+
+<form asp-action="Add" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="FirstName" class="form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LastName" class="form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DateOfBirth" class="form-label"></label>
+        <input asp-for="DateOfBirth" class="form-control" type="date" />
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SSN" class="form-label"></label>
+        <input asp-for="SSN" class="form-control" />
+        <span asp-validation-for="SSN" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PostCode" class="form-label"></label>
+        <input asp-for="PostCode" class="form-control" />
+        <span asp-validation-for="PostCode" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" id="datepicker" class="form-control" onchange="checkAge()"/>
+          <span id="ageError" class="text-danger" style="display: none;">You must be at least 18 years old.</span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DriverLicense" class="form-label"></label>
+        <input asp-for="DriverLicense" class="form-control" />
+        <span asp-validation-for="DriverLicense" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Add" class="btn btn-primary" />
+    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+<script>
+    function checkAge() {
+      var selectedDate = new Date(document.getElementById("datepicker").value);
+      var currentDate = new Date();
+      var minAgeDate = new Date();
+      minAgeDate.setFullYear(currentDate.getFullYear() - 18);
+
+      if (selectedDate > minAgeDate) {
+        document.getElementById("datepicker").value = "";
+        document.getElementById("ageError").style.display = "inline";
+      } else {
+        document.getElementById("ageError").style.display = "none";
+      }
+    }
+  </script>

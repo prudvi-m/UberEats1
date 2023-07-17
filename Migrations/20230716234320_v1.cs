@@ -36,7 +36,8 @@ namespace UberEats.Migrations
                     PostCode = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     Phone = table.Column<string>(type: "TEXT", nullable: false),
-                    DriverLicense = table.Column<string>(type: "TEXT", nullable: false)
+                    DriverLicense = table.Column<string>(type: "TEXT", nullable: false),
+                    Status = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,7 +55,8 @@ namespace UberEats.Migrations
                     BusinessEmail = table.Column<string>(type: "TEXT", nullable: false),
                     BusinessPhone = table.Column<string>(type: "TEXT", nullable: false),
                     CategoryID = table.Column<int>(type: "INTEGER", nullable: false),
-                    LogoImage = table.Column<string>(type: "TEXT", nullable: false)
+                    LogoImage = table.Column<string>(type: "TEXT", nullable: false),
+                    Status = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,9 +105,14 @@ namespace UberEats.Migrations
                 values: new object[] { 7, "retail" });
 
             migrationBuilder.InsertData(
+                table: "Drivers",
+                columns: new[] { "DriverID", "Address", "DateOfBirth", "DriverLicense", "Email", "FirstName", "LastName", "Phone", "PostCode", "SSN", "Status" },
+                values: new object[] { 1, "address", new DateTime(1996, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "21342134", "sample@fgmailc.com", "fname", "lname", "123-123-1212", "12345-1234", "123-12-1212", "New" });
+
+            migrationBuilder.InsertData(
                 table: "Partners",
-                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
-                values: new object[] { 1, "Chicago, 3001", "intial@gmail.com", "intial", "123456", 1, "" });
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage", "Status" },
+                values: new object[] { 1, "Chicago, 3001", "intial@gmail.com", "intial", "123456", 1, "", "New" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Partners_CategoryID",

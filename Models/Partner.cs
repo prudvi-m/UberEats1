@@ -28,5 +28,8 @@ namespace UberEats.Models
       public Category Category { get; set; } = null!;
       
       public string LogoImage { get; set; } = string.Empty;
+
+      public string Status { get; set; } = "New";
+
     }
 }

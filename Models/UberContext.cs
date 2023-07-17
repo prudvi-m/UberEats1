@@ -40,6 +40,22 @@ namespace UberEats.Models
                     BusinessPhone = "123456"
                 }
             );
+
+            modelBuilder.Entity<Driver>().HasData(
+                new Driver
+                {
+                    DriverID = 1,
+                    FirstName = "fname",
+                    LastName = "lname",
+                    Address = "address",
+                    SSN = "123-12-1212",
+                    PostCode = "12345-1234",
+                    Email = "sample@fgmailc.com",
+                    Phone = "123-123-1212",
+                    DriverLicense = "21342134",
+                    DateOfBirth = DateTime.Parse("1/1/1996")
+                }
+            );
         }
     }
 }

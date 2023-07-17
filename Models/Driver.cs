@@ -44,6 +44,9 @@ namespace UberEats.Models
         [RegularExpression(@"^[a-zA-Z0-9\s-]+$", ErrorMessage = "Driving license number must be alphanumeric.")]
         public string DriverLicense { get; set; } = string.Empty;
 
+        
+        public string Status { get; set; } = "New";
+
         public string Slug =>
             FirstName?.Replace(' ', '-').ToLower() + '-' + SSN?.ToString();
     }

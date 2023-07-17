@@ -1,0 +1,92 @@
+﻿@model List<Driver>
+@{
+    ViewData["Title"] = "Driver";
+    ViewBag.Dta="new";
+   
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (TempData["message"]!=null){
+    <div class="col-sm-8">
+        <div class="alert alert-primary">@TempData["message"]</div>
+    </div>
+}
+
+
+
+<div class="row">
+    <div class="col-md-2">
+        <ul class="list-group">
+            <a asp-action="List" asp-route-id="All"
+               class="list-group-item
+                @if (ViewBag.SelectedCategoryName == "All") {
+                    <text>active</text>
+                } ">All</a>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <a asp-action="List" asp-route-id="@c.Name"
+                   class="list-group-item
+                         @(ViewBag.SelectedCategoryName == c.Name ? "active" : "")">
+                    @c.Name
+                </a>
+            }
+        </ul>
+    </div>
+
+    <div class="col-md-10">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
+                <th>SSN</th>
+                <th>Post Code</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Driver License</th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var driver in Model)
+            {
+                <tr>
+                    <td>@driver.FirstName</td>
+                    <td>@driver.LastName</td>
+                    <td>@driver.DateOfBirth.ToShortDateString()</td>
+                    <td>@driver.Address</td>
+                    <td>@driver.SSN</td>
+                    <td>@driver.PostCode</td>
+                    <td>@driver.Email</td>
+                    <td>@driver.Phone</td>
+                    <td>@driver.DriverLicense</td>
+
+                    @if (string.IsNullOrEmpty(driver.Status) || driver.Status.Equals("New", StringComparison.OrdinalIgnoreCase))
+                    {
+                        <td>
+                            <a asp-action="Approve" asp-route-id="@driver.DriverID">@driver.Status</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@driver.Status</td>
+                    }
+                    <td>
+                        <a asp-action="Update" asp-route-id="@driver.DriverID">Update</a>
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@driver.DriverID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" class="btn btn-primary">Add New Driver</a>
+</div>
+
+</div>

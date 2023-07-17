@@ -1,0 +1,15 @@
+﻿@model Driver
+@{
+    ViewData["Title"] = "Delete Driver";
+}
+
+<h1>Confirm Deletion</h1>
+<h3>@Model.FirstName @Model.LastName</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="DriverID" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-action="List" class="btn btn-primary">Cancel</a>
+</form>
+

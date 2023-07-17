@@ -5,8 +5,6 @@ using UberEats.Models;
 
 namespace UberEats.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class DriverController : Controller
     {
         private UberContext context;
@@ -23,15 +21,15 @@ namespace UberEats.Controllers
 
         public IActionResult List(string id = "All")
         {
-            List<Driver> drivers;
+            List<Driver> products;
             if (id == "All")
             {
-                drivers = context.Drivers
+                products = context.Drivers
                     .OrderBy(p => p.DriverID).ToList();
             }
             else
             {
-                drivers = context.Drivers
+                products = context.Drivers
                     .OrderBy(p => p.DriverID).ToList();
             }
 
@@ -39,47 +37,50 @@ namespace UberEats.Controllers
             ViewBag.Categories = categories;
             ViewBag.SelectedCategoryName = id;
 
-            // bind drivers to view
-            return View(drivers);
+            // bind products to view
+            return View(products);
         }
 
+        public IActionResult Detail(int id)
+        {
+            var session = new UberSession(HttpContext.Session);
+            var model = new DriversViewModel
+            {
+                Driver = context.Drivers
+                    .FirstOrDefault(t => t.DriverID == id) ?? new Driver(),
+                ActiveDiv = session.GetActiveDiv(),
+                ActiveConf = session.GetActiveConf()
+            };
+            return View(model);
+        }
       
         public IActionResult Index()
         {
             return View();
         }
 
+       [Route("[controller]/add")]
        [HttpGet]
         public IActionResult add()
         {
             Driver driver = new Driver(); 
-            // ViewBag.Categories = categories;
+            ViewBag.Categories = categories;
             return View("add",driver);
         }
        
-        [Route("[controller]/add")]
         [HttpPost]
-        public IActionResult add(Driver driver)
+        public IActionResult Add(Driver driver)
         {
-            context.Drivers.Add(driver);
-            context.SaveChanges();
-            return RedirectToAction("","Home");  
-        }
-
-        public IActionResult VerifyEmail(string email)
-        {
-            // Check if the email already exists in the database
-            // bool isEmailExists = /* Logic to check if email exists */;
-            // Access your data access layer or repository to perform the query
-            
-            bool isEmailExists = context.Drivers.Any(driver => driver.Email == email);
-
-            if (isEmailExists)
+            if (ModelState.IsValid)
             {
-                return Json(data: $"Email '{email}' is already in use.");
+                context.Drivers.Add(driver);
+                context.SaveChanges();
+                TempData["Message"] = "Driver Application has been received. We will email you once the application has been received.";
+                return RedirectToAction("Index", "Home");
             }
-
-            return Json(data: true);
+            ViewBag.Categories = categories;
+            // If ModelState is not valid, return to the add view with validation errors
+            return View("Add", driver);
         }
     }
 }

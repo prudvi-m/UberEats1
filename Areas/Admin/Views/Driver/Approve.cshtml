@@ -1,0 +1,23 @@
+@model Driver
+@{
+    ViewData["Title"] = "Approve Driver";
+}
+
+<h1>Approve A New Driver</h1>
+<h3>@Model.FirstName located at @Model.Address with SSN of @Model.SSN</h3>
+
+<form id="approveForm" asp-action="Approve" method="post">
+    <input type="hidden" asp-for="DriverID" />
+
+    <button type="button" class="btn btn-primary" onclick="submitForm('Approved')">Approve</button>
+    <button type="button" class="btn btn-primary" onclick="submitForm('Reject')">Reject</button>
+    <a asp-action="List" class="btn btn-primary">Cancel</a>
+</form>
+
+<script>
+    function submitForm(status) {
+        document.getElementById("approveForm").innerHTML +=
+            '<input type="hidden" name="Status" value="' + status + '" />';
+        document.getElementById("approveForm").submit();
+    }
+</script>

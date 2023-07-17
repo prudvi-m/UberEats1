@@ -111,9 +111,29 @@ namespace UberEats.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("DriverID");
 
                     b.ToTable("Drivers");
+
+                    b.HasData(
+                        new
+                        {
+                            DriverID = 1,
+                            Address = "address",
+                            DateOfBirth = new DateTime(1996, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DriverLicense = "21342134",
+                            Email = "sample@fgmailc.com",
+                            FirstName = "fname",
+                            LastName = "lname",
+                            Phone = "123-123-1212",
+                            PostCode = "12345-1234",
+                            SSN = "123-12-1212",
+                            Status = "New"
+                        });
                 });
 
             modelBuilder.Entity("UberEats.Models.Partner", b =>
@@ -145,6 +165,10 @@ namespace UberEats.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("PartnerID");
 
                     b.HasIndex("CategoryID");
@@ -160,7 +184,8 @@ namespace UberEats.Migrations
                             BusinessName = "intial",
                             BusinessPhone = "123456",
                             CategoryID = 1,
-                            LogoImage = ""
+                            LogoImage = "",
+                            Status = "New"
                         });
                 });
 
