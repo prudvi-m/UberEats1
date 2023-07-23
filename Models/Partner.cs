@@ -6,7 +6,6 @@ namespace UberEats.Models
 {
     public class Partner
     {
-      // EF will instruct the database to automatically generate this value
       public int PartnerID { get; set; }
 
       [Required(ErrorMessage = "Please enter a BusinessName.")]
@@ -27,7 +26,6 @@ namespace UberEats.Models
       [ValidateNever]
       public Category Category { get; set; } = null!;
 
-      // Collection of Menu
       public List<Item> Menu { get; set; } = new List<Item>();
       
       public string LogoImage { get; set; } = string.Empty;

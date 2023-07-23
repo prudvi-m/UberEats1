@@ -34,11 +34,9 @@ namespace UberEats.Controllers
                     .OrderBy(p => p.PartnerID).ToList();
             }
 
-            // use ViewBag to pass category data to view
             ViewBag.Categories = categories;
             ViewBag.SelectedCategoryName = id;
 
-            // bind products to view
             return View(products);
         }
       
@@ -67,7 +65,6 @@ namespace UberEats.Controllers
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.Categories = categories;
-            // If ModelState is not valid, return to the add view with validation errors
             return View("Add", partner);
         }
     }
