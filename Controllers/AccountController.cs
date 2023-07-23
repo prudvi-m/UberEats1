@@ -8,11 +8,13 @@ namespace UberEats.Controllers
     public class AccountController : Controller
     {
         private UserManager<User> userManager;
+        private UberContext context;
         private SignInManager<User> signInManager;
 
         public AccountController(UserManager<User> userMngr,
-            SignInManager<User> signInMngr)
+            SignInManager<User> signInMngr,UberContext ctx)
         {
+            context = ctx;
             userManager = userMngr;
             signInManager = signInMngr;
         }
@@ -66,30 +68,47 @@ namespace UberEats.Controllers
             return View(model);
         }
 
+        // [HttpPost]
+        // public async Task<IActionResult> LogIn(LoginViewModel model)
+        // {
+        //     if (ModelState.IsValid)
+        //     {                
+        //         var result = await signInManager.PasswordSignInAsync(
+        //             model.Username, model.Password, isPersistent: model.RememberMe, 
+        //             lockoutOnFailure: false);
+
+        //         if (result.Succeeded)
+        //         {
+        //             if (!string.IsNullOrEmpty(model.ReturnUrl) && 
+        //                 Url.IsLocalUrl(model.ReturnUrl))
+        //             {
+        //                 return Redirect(model.ReturnUrl);
+        //             }
+        //             else
+        //             {
+        //                 return RedirectToAction("Index", "Home");
+        //             }
+        //         }
+        //     }
+        //     ModelState.AddModelError("", "Invalid username/password.");
+        //     return View(model);
+        // }
+
+
         [HttpPost]
         public async Task<IActionResult> LogIn(LoginViewModel model)
         {
-            if (ModelState.IsValid)
-            {                
-                var result = await signInManager.PasswordSignInAsync(
-                    model.Username, model.Password, isPersistent: model.RememberMe, 
-                    lockoutOnFailure: false);
+            // Query the database to find the Partner with the matching BusinessEmail
+            var partner = context.Partners.FirstOrDefault(p => p.BusinessEmail == model.Username);
 
-                if (result.Succeeded)
-                {
-                    if (!string.IsNullOrEmpty(model.ReturnUrl) && 
-                        Url.IsLocalUrl(model.ReturnUrl))
-                    {
-                        return Redirect(model.ReturnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
-                }
+            if (partner == null)
+            {
+                // Partner with the specified email was not found
+                return NotFound();
             }
-            ModelState.AddModelError("", "Invalid username/password.");
-            return View(model);
+
+            // Partner with the specified email was found, do something with it
+            return RedirectToAction("List", "MenuItem", new { partnerId = partner.PartnerID });
         }
 
         public ViewResult AccessDenied()

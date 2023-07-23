@@ -41,8 +41,6 @@ namespace UberEats.Controllers
             // bind products to view
             return View(products);
         }
-
-        
       
         public IActionResult Index()
         {
