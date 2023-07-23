@@ -108,7 +108,7 @@ namespace UberEats.Controllers
             }
 
             // Partner with the specified email was found, do something with it
-            return RedirectToAction("List", "MenuItem", new { partnerId = partner.PartnerID });
+            return RedirectToAction("List", "Item", new { partnerId = partner.PartnerID });
         }
 
         public ViewResult AccessDenied()

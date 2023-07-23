@@ -13,8 +13,8 @@ namespace UberEats.Models
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Partner> Partners { get; set; } = null!;
         public DbSet<Driver> Drivers { get; set; } = null!;
-        public DbSet<MenuCategory> MenuCategories { get; set; } = null!;
-        public DbSet<MenuItem> MenuItems { get; set; } = null!;
+        public DbSet<ItemCategory> MenuCategories { get; set; } = null!;
+        public DbSet<Item> Menu { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,23 +30,23 @@ namespace UberEats.Models
                 new Category { CategoryID= 7,Name = "retail"}
             );
 
-            modelBuilder.Entity<MenuCategory>().HasData(
-                new MenuCategory { MenuCategoryID = 1, Name = "Appetizer" },
-                new MenuCategory { MenuCategoryID = 2, Name = "Soup" },
-                new MenuCategory { MenuCategoryID = 3, Name = "Salad" },
-                new MenuCategory { MenuCategoryID= 4, Name = "Main Course"},
-                new MenuCategory { MenuCategoryID= 5, Name = "Dessert"},
-                new MenuCategory { MenuCategoryID= 6,Name = "Drink"},
-                new MenuCategory { MenuCategoryID= 7,Name = "Vegetarian"}
+            modelBuilder.Entity<ItemCategory>().HasData(
+                new ItemCategory { ItemCategoryID = 1, Name = "Appetizer" },
+                new ItemCategory { ItemCategoryID = 2, Name = "Soup" },
+                new ItemCategory { ItemCategoryID = 3, Name = "Salad" },
+                new ItemCategory { ItemCategoryID= 4, Name = "Main Course"},
+                new ItemCategory { ItemCategoryID= 5, Name = "Dessert"},
+                new ItemCategory { ItemCategoryID= 6,Name = "Drink"},
+                new ItemCategory { ItemCategoryID= 7,Name = "Vegetarian"}
             );
 
-            modelBuilder.Entity<MenuItem>().HasData(
-                new MenuItem {
-                    MenuItemID = 1,
+            modelBuilder.Entity<Item>().HasData(
+                new Item {
+                    ItemID = 1,
                     Name = "Payasam",
                     Price = 5.2,
                     Description = "Traditional Delicious Sweet",
-                    MenuCategoryID = 5,
+                    ItemCategoryID = 5,
                     PartnerID = 1
                 }
             );
