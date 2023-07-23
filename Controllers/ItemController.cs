@@ -41,7 +41,7 @@ public class ItemController : Controller
 
         ViewBag.partnerId = partnerId;
         ViewBag.MenuCategories = _context.MenuCategories.ToList();
-        ViewBag.SelectedMenuCategoryName = id;
+        ViewBag.SelectedItemCategoryName = id;
 
         return View(itemsList);
     }

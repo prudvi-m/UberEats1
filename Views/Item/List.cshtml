@@ -17,14 +17,14 @@
         <ul class="list-group">
             <a asp-action="List" asp-route-id="All"
                class="list-group-item
-                @if (ViewBag.SelectedMenuCategoryName == "All") {
+                @if (ViewBag.SelectedItemCategoryName == "All") {
                     <text>active</text>
                 } ">All</a>
             @foreach (ItemCategory c in ViewBag.MenuCategories)
             {
                 <a asp-action="List" asp-route-id="@c.Name"
                    class="list-group-item
-                         @(ViewBag.SelectedMenuCategoryName == c.Name ? "active" : "")">
+                         @(ViewBag.SelectedItemCategoryName == c.Name ? "active" : "")">
                     @c.Name
                 </a>
             }
