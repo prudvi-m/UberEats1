@@ -31,6 +31,8 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
 
+    <input type="hidden" asp-for="PartnerID" />
+    
     <button type="submit" class="btn btn-primary">Add</button>
     <a asp-action="List" class="btn btn-primary">Cancel</a>
 </form>

@@ -6,10 +6,9 @@ namespace UberEats.Models
 {
     public class MenuItem
     {
-      // EF will instruct the database to automatically generate this value
+      
       public int MenuItemID { get; set; }
 
-      // EF will instruct the database to automatically generate this value
       public string Name { get; set; }
 
       [Required(ErrorMessage = "Please enter a Price.")]

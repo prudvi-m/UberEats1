@@ -13,11 +13,10 @@ public class MenuItemController : Controller
         _context = context;
     }
 
-    public IActionResult Add()
+    public IActionResult Add(int partnerId)
     {
-        // Fetch the list of available MenuCategories for the dropdown select list
         ViewBag.MenuCategories = _context.MenuCategories.ToList();
-        return View();
+        return View(new MenuItem { PartnerID = partnerId});
     }
 
     [HttpPost]
@@ -27,7 +26,7 @@ public class MenuItemController : Controller
         {
             _context.MenuItems.Add(menuItem);
             await _context.SaveChangesAsync();
-            return RedirectToAction("List");
+            return RedirectToAction("List", new { partnerId = menuItem.PartnerID });
         }
 
         // If model state is not valid, fetch the list of available MenuCategories for the dropdown select list
@@ -72,7 +71,7 @@ public class MenuItemController : Controller
                 .OrderBy(p => p.MenuItemID).ToList();
         }
 
-        // use ViewBag to pass category data to view
+        ViewBag.partnerId = partnerId;
         ViewBag.MenuCategories = _context.MenuCategories.ToList();
         ViewBag.SelectedMenuCategoryName = id;
 
@@ -83,11 +82,19 @@ public class MenuItemController : Controller
     public IActionResult Delete(int id)
     {
         var menuItem = _context.MenuItems.FirstOrDefault(mi => mi.MenuItemID == id);
+        return View(menuItem);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(MenuItem menuItem)
+    {
+        menuItem = _context.MenuItems.FirstOrDefault(mi => mi.MenuItemID == menuItem.MenuItemID);
         if (menuItem != null)
         {
             _context.MenuItems.Remove(menuItem);
             _context.SaveChanges();
         }
+        TempData["message"] = "Successfully deleted the item.";
         return RedirectToAction("List");
     }
 
@@ -115,7 +122,6 @@ public class MenuItemController : Controller
             return RedirectToAction("List");
         }
 
-        // If model state is not valid, fetch the list of available MenuCategories for the dropdown select list
         ViewBag.MenuCategories = _context.MenuCategories.ToList();
         return View(menuItem);
     }
