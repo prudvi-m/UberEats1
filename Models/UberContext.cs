@@ -43,11 +43,11 @@ namespace UberEats.Models
             modelBuilder.Entity<Item>().HasData(
                 new Item {
                     ItemID = 1,
-                    Name = "Payasam",
-                    Price = 5.2,
-                    Description = "Traditional Delicious Sweet",
-                    ItemCategoryID = 5,
-                    PartnerID = 1
+                    PartnerID = 1,
+                    Name = "Biscochitos",
+                    Price = 31.5,
+                    Description = "Mast Brothers bittersweet chocolate, salted caramel, cacao crust, olive oil and a sprinkling of sea salt",
+                    ItemCategoryID = 5
                 }
             );
 
@@ -57,10 +57,10 @@ namespace UberEats.Models
                 {
                     PartnerID = 1,
                     CategoryID = 1,
-                    BusinessName = "intial",
-                    BusinessAddress = "Chicago, 3001",
-                    BusinessEmail = "intial@gmail.com",
-                    BusinessPhone = "123456"
+                    BusinessName = "Vinod Restaurant",
+                    BusinessAddress = "Chicago, 401, West Downtown",
+                    BusinessEmail = "vr@gmail.com",
+                    BusinessPhone = "007"
                 }
             );
         }

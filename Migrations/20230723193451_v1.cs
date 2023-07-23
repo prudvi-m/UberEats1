@@ -182,12 +182,12 @@ namespace UberEats.Migrations
             migrationBuilder.InsertData(
                 table: "Partners",
                 columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
-                values: new object[] { 1, "Chicago, 3001", "intial@gmail.com", "intial", "123456", 1, "" });
+                values: new object[] { 1, "Chicago, 401, West Downtown", "vr@gmail.com", "Vinod Restaurant", "007", 1, "" });
 
             migrationBuilder.InsertData(
                 table: "Menu",
                 columns: new[] { "ItemID", "Description", "ItemCategoryID", "Name", "PartnerID", "Price" },
-                values: new object[] { 1, "Traditional Delicious Sweet", 5, "Payasam", 1, 5.2000000000000002 });
+                values: new object[] { 1, "Mast Brothers bittersweet chocolate, salted caramel, cacao crust, olive oil and a sprinkling of sea salt", 5, "Biscochitos", 1, 31.5 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Menu_ItemCategoryID",

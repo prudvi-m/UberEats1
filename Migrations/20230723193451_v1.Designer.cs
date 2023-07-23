@@ -11,7 +11,7 @@ using UberEats.Models;
 namespace UberEats.Migrations
 {
     [DbContext(typeof(UberContext))]
-    [Migration("20230723191430_v1")]
+    [Migration("20230723193451_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,11 +153,11 @@ namespace UberEats.Migrations
                         new
                         {
                             ItemID = 1,
-                            Description = "Traditional Delicious Sweet",
+                            Description = "Mast Brothers bittersweet chocolate, salted caramel, cacao crust, olive oil and a sprinkling of sea salt",
                             ItemCategoryID = 5,
-                            Name = "Payasam",
+                            Name = "Biscochitos",
                             PartnerID = 1,
-                            Price = 5.2000000000000002
+                            Price = 31.5
                         });
                 });
 
@@ -252,10 +252,10 @@ namespace UberEats.Migrations
                         new
                         {
                             PartnerID = 1,
-                            BusinessAddress = "Chicago, 3001",
-                            BusinessEmail = "intial@gmail.com",
-                            BusinessName = "intial",
-                            BusinessPhone = "123456",
+                            BusinessAddress = "Chicago, 401, West Downtown",
+                            BusinessEmail = "vr@gmail.com",
+                            BusinessName = "Vinod Restaurant",
+                            BusinessPhone = "007",
                             CategoryID = 1,
                             LogoImage = ""
                         });
