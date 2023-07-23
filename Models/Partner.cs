@@ -26,6 +26,9 @@ namespace UberEats.Models
 
       [ValidateNever]
       public Category Category { get; set; } = null!;
+
+      // Collection of MenuItems
+      public List<MenuItem> MenuItems { get; set; } = new List<MenuItem>();
       
       public string LogoImage { get; set; } = string.Empty;
     }

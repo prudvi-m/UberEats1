@@ -13,6 +13,8 @@ namespace UberEats.Models
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Partner> Partners { get; set; } = null!;
         public DbSet<Driver> Drivers { get; set; } = null!;
+        public DbSet<MenuCategory> MenuCategories { get; set; } = null!;
+        public DbSet<MenuItem> MenuItems { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +28,27 @@ namespace UberEats.Models
                 new Category { CategoryID= 5, Name = "Flower shop"},
                 new Category { CategoryID= 6,Name = "Pet Store"},
                 new Category { CategoryID= 7,Name = "retail"}
+            );
+
+            modelBuilder.Entity<MenuCategory>().HasData(
+                new MenuCategory { MenuCategoryID = 1, Name = "Appetizer" },
+                new MenuCategory { MenuCategoryID = 2, Name = "Soup" },
+                new MenuCategory { MenuCategoryID = 3, Name = "Salad" },
+                new MenuCategory { MenuCategoryID= 4, Name = "Main Course"},
+                new MenuCategory { MenuCategoryID= 5, Name = "Dessert"},
+                new MenuCategory { MenuCategoryID= 6,Name = "Drink"},
+                new MenuCategory { MenuCategoryID= 7,Name = "Vegetarian"}
+            );
+
+            modelBuilder.Entity<MenuItem>().HasData(
+                new MenuItem {
+                    MenuItemID = 1,
+                    Name = "Payasam",
+                    Price = 5.2,
+                    Description = "Traditional Delicious Sweet",
+                    MenuCategoryID = 5,
+                    PartnerID = 1
+                }
             );
 
 

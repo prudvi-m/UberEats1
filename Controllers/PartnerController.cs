@@ -42,18 +42,7 @@ namespace UberEats.Controllers
             return View(products);
         }
 
-        public IActionResult Detail(int id)
-        {
-            var session = new UberSession(HttpContext.Session);
-            var model = new PartnersViewModel
-            {
-                Partner = context.Partners
-                    .FirstOrDefault(t => t.PartnerID == id) ?? new Partner(),
-                ActiveDiv = session.GetActiveDiv(),
-                ActiveConf = session.GetActiveConf()
-            };
-            return View(model);
-        }
+        
       
         public IActionResult Index()
         {

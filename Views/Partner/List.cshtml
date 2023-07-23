@@ -73,10 +73,8 @@
                         else if(@p.CategoryID==7){
                             <td>retail</td>
                         }
-                        
                         <td>
-                            <a asp-action="Menu"
-                               asp-route-id="@p.PartnerID">Menu</a>
+                            <a asp-controller="MenuItem" asp-action="List" asp-route-partnerId=@p.PartnerID>Menu</a>
                         </td>
                         <td>
                             <a asp-action="Detail"

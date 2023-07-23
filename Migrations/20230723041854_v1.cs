@@ -44,6 +44,19 @@ namespace UberEats.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MenuCategories",
+                columns: table => new
+                {
+                    MenuCategoryID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuCategories", x => x.MenuCategoryID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Partners",
                 columns: table => new
                 {
@@ -64,6 +77,35 @@ namespace UberEats.Migrations
                         column: x => x.CategoryID,
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MenuItems",
+                columns: table => new
+                {
+                    MenuItemID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Price = table.Column<double>(type: "REAL", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    PartnerID = table.Column<int>(type: "INTEGER", nullable: false),
+                    MenuCategoryID = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenuItems", x => x.MenuItemID);
+                    table.ForeignKey(
+                        name: "FK_MenuItems_MenuCategories_MenuCategoryID",
+                        column: x => x.MenuCategoryID,
+                        principalTable: "MenuCategories",
+                        principalColumn: "MenuCategoryID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MenuItems_Partners_PartnerID",
+                        column: x => x.PartnerID,
+                        principalTable: "Partners",
+                        principalColumn: "PartnerID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -103,9 +145,59 @@ namespace UberEats.Migrations
                 values: new object[] { 7, "retail" });
 
             migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 1, "Appetizer" });
+
+            migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 2, "Soup" });
+
+            migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 3, "Salad" });
+
+            migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 4, "Main Course" });
+
+            migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 5, "Dessert" });
+
+            migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 6, "Drink" });
+
+            migrationBuilder.InsertData(
+                table: "MenuCategories",
+                columns: new[] { "MenuCategoryID", "Name" },
+                values: new object[] { 7, "Vegetarian" });
+
+            migrationBuilder.InsertData(
                 table: "Partners",
                 columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
                 values: new object[] { 1, "Chicago, 3001", "intial@gmail.com", "intial", "123456", 1, "" });
+
+            migrationBuilder.InsertData(
+                table: "MenuItems",
+                columns: new[] { "MenuItemID", "Description", "MenuCategoryID", "Name", "PartnerID", "Price" },
+                values: new object[] { 1, "Traditional Delicious Sweet", 5, "Payasam", 1, 5.2000000000000002 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuItems_MenuCategoryID",
+                table: "MenuItems",
+                column: "MenuCategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MenuItems_PartnerID",
+                table: "MenuItems",
+                column: "PartnerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Partners_CategoryID",
@@ -117,6 +209,12 @@ namespace UberEats.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Drivers");
+
+            migrationBuilder.DropTable(
+                name: "MenuItems");
+
+            migrationBuilder.DropTable(
+                name: "MenuCategories");
 
             migrationBuilder.DropTable(
                 name: "Partners");
