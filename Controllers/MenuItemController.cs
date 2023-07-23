@@ -95,7 +95,7 @@ public class MenuItemController : Controller
             _context.SaveChanges();
         }
         TempData["message"] = "Successfully deleted the item.";
-        return RedirectToAction("List");
+        return RedirectToAction("List", new { partnerId = menuItem.PartnerID });
     }
 
     public IActionResult Update(int id)
@@ -119,7 +119,7 @@ public class MenuItemController : Controller
         {
             _context.MenuItems.Update(menuItem);
             await _context.SaveChangesAsync();
-            return RedirectToAction("List");
+            return RedirectToAction("List", new { partnerId = menuItem.PartnerID });
         }
 
         ViewBag.MenuCategories = _context.MenuCategories.ToList();
