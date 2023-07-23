@@ -46,7 +46,7 @@ namespace UberEats.Models
                     PartnerID = 1,
                     Name = "Biscochitos",
                     Price = 31.5,
-                    Description = "Mast Brothers bittersweet chocolate, salted caramel, cacao crust, olive oil and a sprinkling of sea salt",
+                    Description = "Mast Brothers bittersweet chocolate",
                     ItemCategoryID = 5
                 }
             );
