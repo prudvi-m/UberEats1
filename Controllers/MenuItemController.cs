@@ -70,8 +70,11 @@ public class MenuItemController : Controller
                 .Where(p => p.MenuCategory.Name == id && p.PartnerID == partnerId)
                 .OrderBy(p => p.MenuItemID).ToList();
         }
+        var partner = _context.Partners.FirstOrDefault(p => p.PartnerID == partnerId);
+        string BussinessName = partner?.BusinessName ?? string.Empty;
 
         ViewBag.partnerId = partnerId;
+        ViewBag.BussinessName = BussinessName;
         ViewBag.MenuCategories = _context.MenuCategories.ToList();
         ViewBag.SelectedMenuCategoryName = id;
 

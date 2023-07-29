@@ -1,6 +1,6 @@
 @model List<Partner>
 @{
-    ViewData["Title"] = "Partner";
+    ViewData["Title"] = "Welcome! Partner";
     ViewBag.Dta="new";
 }
 
@@ -41,7 +41,6 @@
                     <th>Type</th>
                     @* <th>Status</th> *@
                     <th></th>
-                    <th></th>
             </thead>
             <tbody>
                 @foreach (var p in Model)
@@ -74,10 +73,6 @@
                         }
                         <td>
                             <a asp-controller="MenuItem" asp-action="List" asp-route-partnerId=@p.PartnerID>Menu</a>
-                        </td>
-                        <td>
-                            <a asp-action="Detail"
-                               asp-route-id="@p.PartnerID">Detail</a>
                         </td>
                     </tr>
                 }
