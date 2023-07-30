@@ -3,7 +3,7 @@
     ViewData["Title"] = "Welcome! Partner";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1>Menu for @ViewBag.BussinessName</h1>
 
 @if (TempData["message"] != null)
 {
@@ -15,14 +15,14 @@
 <div class="row">
     <div class="col-md-2">
         <ul class="list-group">
-            <a asp-action="List" asp-route-id="All"
+            <a asp-action="List" asp-route-id="All" asp-route-partnerId="@ViewBag.partnerId"
                class="list-group-item
                 @if (ViewBag.SelectedMenuCategoryName == "All") {
                     <text>active</text>
                 } ">All</a>
             @foreach (MenuCategory c in ViewBag.MenuCategories)
             {
-                <a asp-action="List" asp-route-id="@c.Name"
+                <a asp-action="List" asp-route-id="@c.Name"  asp-route-partnerId="@ViewBag.partnerId"
                    class="list-group-item
                          @(ViewBag.SelectedMenuCategoryName == c.Name ? "active" : "")">
                     @c.Name

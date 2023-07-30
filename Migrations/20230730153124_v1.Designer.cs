@@ -11,7 +11,7 @@ using UberEats.Models;
 namespace UberEats.Migrations
 {
     [DbContext(typeof(UberContext))]
-    [Migration("20230723181511_v1")]
+    [Migration("20230730153124_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,6 +255,56 @@ namespace UberEats.Migrations
                             BusinessAddress = "Chicago, 3001",
                             BusinessEmail = "intial@gmail.com",
                             BusinessName = "intial",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 2,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "second@gmail.com",
+                            BusinessName = "second",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 3,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "third@gmail.com",
+                            BusinessName = "third",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 4,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "fourth@gmail.com",
+                            BusinessName = "fourth",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 5,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "fifth@gmail.com",
+                            BusinessName = "fifth",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 6,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "sixth@gmail.com",
+                            BusinessName = "sixth",
                             BusinessPhone = "123456",
                             CategoryID = 1,
                             LogoImage = ""

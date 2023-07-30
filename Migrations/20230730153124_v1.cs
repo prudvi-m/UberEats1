@@ -185,6 +185,31 @@ namespace UberEats.Migrations
                 values: new object[] { 1, "Chicago, 3001", "intial@gmail.com", "intial", "123456", 1, "" });
 
             migrationBuilder.InsertData(
+                table: "Partners",
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
+                values: new object[] { 2, "Chicago, 3001", "second@gmail.com", "second", "123456", 1, "" });
+
+            migrationBuilder.InsertData(
+                table: "Partners",
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
+                values: new object[] { 3, "Chicago, 3001", "third@gmail.com", "third", "123456", 1, "" });
+
+            migrationBuilder.InsertData(
+                table: "Partners",
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
+                values: new object[] { 4, "Chicago, 3001", "fourth@gmail.com", "fourth", "123456", 1, "" });
+
+            migrationBuilder.InsertData(
+                table: "Partners",
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
+                values: new object[] { 5, "Chicago, 3001", "fifth@gmail.com", "fifth", "123456", 1, "" });
+
+            migrationBuilder.InsertData(
+                table: "Partners",
+                columns: new[] { "PartnerID", "BusinessAddress", "BusinessEmail", "BusinessName", "BusinessPhone", "CategoryID", "LogoImage" },
+                values: new object[] { 6, "Chicago, 3001", "sixth@gmail.com", "sixth", "123456", 1, "" });
+
+            migrationBuilder.InsertData(
                 table: "MenuItems",
                 columns: new[] { "MenuItemID", "Description", "MenuCategoryID", "Name", "PartnerID", "Price" },
                 values: new object[] { 1, "Traditional Delicious Sweet", 5, "Payasam", 1, 5.2000000000000002 });

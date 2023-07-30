@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using UberEats.Models;
+using UberEats.Models.DataLayer.Reporsitories;
 
 var builder = WebApplication.CreateBuilder(args);
 

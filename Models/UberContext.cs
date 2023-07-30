@@ -61,7 +61,54 @@ namespace UberEats.Models
                     BusinessAddress = "Chicago, 3001",
                     BusinessEmail = "intial@gmail.com",
                     BusinessPhone = "123456"
+                },
+                new Partner
+                {
+                    PartnerID = 2,
+                    CategoryID = 1,
+                    BusinessName = "second",
+                    BusinessAddress = "Chicago, 3001",
+                    BusinessEmail = "second@gmail.com",
+                    BusinessPhone = "123456"
+                },
+                new Partner
+                {
+                    PartnerID = 3,
+                    CategoryID = 1,
+                    BusinessName = "third",
+                    BusinessAddress = "Chicago, 3001",
+                    BusinessEmail = "third@gmail.com",
+                    BusinessPhone = "123456"
+                },
+                new Partner
+                {
+                    PartnerID = 4,
+                    CategoryID = 1,
+                    BusinessName = "fourth",
+                    BusinessAddress = "Chicago, 3001",
+                    BusinessEmail = "fourth@gmail.com",
+                    BusinessPhone = "123456"
+                },
+                new Partner
+                {
+                    PartnerID = 5,
+                    CategoryID = 1,
+                    BusinessName = "fifth",
+                    BusinessAddress = "Chicago, 3001",
+                    BusinessEmail = "fifth@gmail.com",
+                    BusinessPhone = "123456"
+                },
+                new Partner
+                {
+                    PartnerID = 6,
+                    CategoryID = 1,
+                    BusinessName = "sixth",
+                    BusinessAddress = "Chicago, 3001",
+                    BusinessEmail = "sixth@gmail.com",
+                    BusinessPhone = "123456"
                 }
+
+
             );
         }
     }

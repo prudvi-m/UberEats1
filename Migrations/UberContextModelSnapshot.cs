@@ -256,6 +256,56 @@ namespace UberEats.Migrations
                             BusinessPhone = "123456",
                             CategoryID = 1,
                             LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 2,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "second@gmail.com",
+                            BusinessName = "second",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 3,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "third@gmail.com",
+                            BusinessName = "third",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 4,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "fourth@gmail.com",
+                            BusinessName = "fourth",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 5,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "fifth@gmail.com",
+                            BusinessName = "fifth",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
+                        },
+                        new
+                        {
+                            PartnerID = 6,
+                            BusinessAddress = "Chicago, 3001",
+                            BusinessEmail = "sixth@gmail.com",
+                            BusinessName = "sixth",
+                            BusinessPhone = "123456",
+                            CategoryID = 1,
+                            LogoImage = ""
                         });
                 });
 

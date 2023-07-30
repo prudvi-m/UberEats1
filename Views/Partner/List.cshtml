@@ -1,10 +1,17 @@
-@model List<Partner>
+@using UberEats.Models.Grid;
+@using UberEats.Models.ViewModel;
+@model ViewPartnerModel
 @{
     ViewData["Title"] = "Partner";
     ViewBag.Dta="new";
 }
-
-<h1>@ViewBag.Title</h1>
+@{
+    ViewBag.Title = "PartnerList";
+    GridData Route = Model.CurrentRoute.Clone();
+    PartnerGriddata Curentroute = Model.CurrentRoute;
+}
+@* <h1>@ViewBag.Title</h1> *@
+<h1>Partner</h1>
 
 @if (TempData["message"]!=null){
     <div class="col-sm-8">
@@ -41,10 +48,9 @@
                     <th>Type</th>
                     @* <th>Status</th> *@
                     <th></th>
-                    <th></th>
             </thead>
             <tbody>
-                @foreach (var p in Model)
+                @foreach (var p in Model.Partners)
                 {
                     <tr>
                         <td>@p.BusinessName</td>
@@ -75,14 +81,21 @@
                         <td>
                             <a asp-controller="MenuItem" asp-action="List" asp-route-partnerId=@p.PartnerID>Menu</a>
                         </td>
-                        <td>
-                            <a asp-action="Detail"
-                               asp-route-id="@p.PartnerID">Detail</a>
-                        </td>
                     </tr>
                 }
             </tbody>
         </table>
+        <div class="m-2">
+            @{
+                Route = Curentroute.Clone();
+                for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    Route.PageNumber = i; string active = @Nav.Active(i, Curentroute.PageNumber);
+                    <a asp-action="SortedList" asp-all-route-data="@Route.ToDictionary()"
+                    class="btn btn-default @active">@i</a>
+                }
+            }
+        </div>
         <a asp-action="Add" class="btn btn-primary">Add New Partner</a>
     </div>
 </div>
