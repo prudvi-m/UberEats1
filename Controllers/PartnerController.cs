@@ -96,14 +96,14 @@ namespace UberEats.Controllers
 
             var partners_sample = dataRepository.List(options);
             var CurrentRoute = values;
-            var TotalPages = values.GetTotalPages(dataRepository.Count);
+            var TotalPageCount = values.GetTotalPages(dataRepository.Count);
 
 
             var partnerList = new ViewPartnerModel
             {
                 Partners = dataRepository.List(options),
                 CurrentRoute = values,
-                TotalPages = values.GetTotalPages(dataRepository.Count)
+                TotalPageCount = values.GetTotalPages(dataRepository.Count)
             };
 
             ViewBag.SelectedCategoryName = id;

@@ -88,10 +88,11 @@
         <div class="m-2">
             @{
                 Route = Curentroute.Clone();
-                for (int i = 1; i <= Model.TotalPages; i++)
+                for (int i = 1; i <= Model.TotalPageCount; i++)
                 {
-                    Route.PageNumber = i; string active = @Nav.Active(i, Curentroute.PageNumber);
-                    <a asp-action="SortedList" asp-all-route-data="@Route.ToDictionary()"
+                    Route.PageNumber = i;
+                    string active = @ViewModelNav.Active(i, Curentroute.PageNumber);
+                    <a asp-action="SortedList" class="btn btn-secondary btn-sm" asp-all-route-data="@Route.ToDictionary()"
                     class="btn btn-default @active">@i</a>
                 }
             }

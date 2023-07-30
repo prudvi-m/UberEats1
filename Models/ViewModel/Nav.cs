@@ -1,6 +1,6 @@
 ﻿namespace UberEats.Models.ViewModel
 {
-    public class Nav
+    public class ViewModelNav
     {
         public static string Active(string value, string current) 
             => (value == current) ? "active" : "";
